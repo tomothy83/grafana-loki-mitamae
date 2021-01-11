@@ -21,12 +21,12 @@ execute "add gpg key" do
 end
 
 execute "add repository" do
-  command <<~EOB
+  command <<EOB
     add-apt-repository \
     "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) \
     stable"
-  EOB
+EOB
   not_if "grep docker /etc/apt/sources.list"
 end
 
