@@ -1,0 +1,10 @@
+[Unit]
+Description=Grafana Loki.
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/docker-compose up
+WorkingDirectory=/usr/local/grafana
+
+[Install]
+WantedBy=multi-user.target

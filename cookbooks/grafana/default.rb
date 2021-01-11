@@ -32,3 +32,18 @@ template "#{app_dir}/docker-compose.yml" do
   group "root"
   mode "0644"
 end
+
+remote_file "/etc/systemd/system/grafana-loki.service" do
+  owner "root"
+  group "root"
+  mode "0644"
+  notifies :run, "execute[systemctl daemon-reload]", :immediately
+end
+
+execute "systemctl daemon-reload" do
+  action :nothing
+end
+
+service "grafana-loki" do
+  action [:start, :enable]
+end
