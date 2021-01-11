@@ -25,3 +25,9 @@ timezone: Asia/Tokyo
 docker:
   compose_version: "1.27.4"
 ```
+
+## Run mitamae
+
+```
+sudo mitamae local ./grafana-loki-mitamae/roles/grafana.rb -y path_to_node.yml
+```
