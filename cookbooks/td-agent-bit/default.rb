@@ -29,6 +29,7 @@ EOB
 end
 
 execute "apt update after td-agent-bit repository added" do
+  command "apt update"
   subscribes :run, "execute[add td-agent-bit repository]", :immediately
   action :nothing
 end
