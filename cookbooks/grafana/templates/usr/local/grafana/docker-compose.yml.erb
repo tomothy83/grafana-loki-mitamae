@@ -1,0 +1,32 @@
+version: "2"
+
+networks:
+  loki:
+
+services:
+  grafana:
+    image: grafana/grafana:<%= node[:grafana][:version] %>
+    environment:
+      - GF_DATABASE_TYPE=sqlite3
+<% if node[:grafana][:https] == true %>
+      - GF_SERVER_PROTOCOL=https
+<% end %>
+      - GF_SECURITY_ADMIN_USER=<%= node[:grafana][:admin][:user] %>
+      - GF_SECURITY_ADMIN_PASSWORD=<%= node[:grafana][:admin][:password] %>
+      - GF_SECURITY_SECRET_KEY=<%= node[:grafana][:secret_key] %>
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    ports:
+      - 80:3000
+    networks:
+      - loki
+  loki:
+    image: grafana/loki:<%= node[:loki][:version] %>
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - loki
+
+volumes:
+  grafana-storage:

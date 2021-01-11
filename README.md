@@ -24,6 +24,15 @@ hostname: hostname.example.com
 timezone: Asia/Tokyo
 docker:
   compose_version: "1.27.4"
+grafana:
+  version: "7.3.6"
+  admin:
+    user: "admin"
+    password: "admin"
+  secret_key: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+loki:
+  version: "2.1.0"
+
 ```
 
 ## Run mitamae
