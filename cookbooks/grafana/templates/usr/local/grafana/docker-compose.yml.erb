@@ -25,6 +25,9 @@ services:
     ports:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - loki-storage:/loki
+      - ./loki.yaml:/etc/loki/local-config.yaml
     networks:
       - loki
   nginx-healthcheck:
@@ -34,3 +37,4 @@ services:
 
 volumes:
   grafana-storage:
+  loki-storage:
