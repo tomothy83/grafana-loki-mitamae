@@ -1,5 +1,5 @@
 # ===============================================
-# docker and docker-compose
+# TD-Agent-Bit
 # ===============================================
 
 package "apt-transport-https"
