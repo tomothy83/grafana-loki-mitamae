@@ -1,0 +1,17 @@
+# grafana-loki
+Vagrant.configure("2") do |config|
+  if Vagrant.has_plugin? "vagrant-vbguest" then
+    config.vbguest.auto_update = false
+  end
+  config.vm.define "grafana-loki" do |config|
+    config.vm.box = "bento/ubuntu-18.04"
+    config.vm.box_version = "202005.21.0"
+    config.vm.provider :virtualbox do |vbox|
+      vbox.name = "grafana-loki"
+      vbox.memory = "1024"
+    end
+    config.vm.synced_folder ".", "/vagrant", disabled: true
+    # config.vm.network :forwarded_port, guest: 80, host: 10080
+    # config.vm.network "public_network"
+  end
+end
