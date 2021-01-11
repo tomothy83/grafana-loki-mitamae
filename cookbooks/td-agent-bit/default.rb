@@ -1,13 +1,6 @@
 # ===============================================
 # docker and docker-compose
 # ===============================================
-node.validate! do
-  {
-    docker: {
-      compose_version: string,
-    },
-  }
-end
 
 package "apt-transport-https"
 package "ca-certificates"
